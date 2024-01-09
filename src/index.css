@@ -39,6 +39,10 @@ nav li {
   border: 1px solid green;
 }
 
+main {
+  margin: auto;
+  text-align: center;
+}
 
 footer {
   position: fixed;
