@@ -1,6 +1,41 @@
 .calculator {
     margin: auto;
-    width: 600px;
-    height: 600px;
-    background-color: grey;
+    width: 300px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    grid-template-rows: minmax(auto, auto);
+}
+
+.result {
+    background-color: lightgray;
+    grid-column: 1 / 5;
+    text-align: right;
+    font-size: 2rem;
+    border-radius: 15px;
+    padding: 0 5px;
+    height: 52px;
+}
+
+.display {
+    background-color: lightgray;
+    grid-column: 1 / 5;
+    text-align: right;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    padding: 0 5px;
+    height: 35px;
+}
+
+.calculator div {
+    margin: 5px;
+    display: block;
+}
+
+.calculator button {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    font-weight: bold;
 }
