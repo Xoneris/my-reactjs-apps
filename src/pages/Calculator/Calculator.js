@@ -4,6 +4,7 @@ import { useState } from 'react';
 function Calculator() {
 
     let lastElementInDisplay;
+    let secondLastElementInDisplay;
     let result = 0;
 
     const [resultDisplay, setResultDisplay] = useState(0);
@@ -21,16 +22,23 @@ function Calculator() {
 
     const addNumberToDisplay = (num) => {
 
-        lastElementInDisplay = display[display.length - 1]
+        lastElementInDisplay = display[display.length - 1];
+        secondLastElementInDisplay = display[display.length - 2];
 
         if (lastElementInDisplay === "+" || lastElementInDisplay === "-" || lastElementInDisplay === "*" || lastElementInDisplay === "/"){
             setDisplay(display + " " + num);
             result = display + num;
         }
-        else {
+        else if (lastElementInDisplay !== "0" || secondLastElementInDisplay !== " ") {
+            /* Check if last Input was 0 and if second last Input was " ". If yes you can't add more zero's */
             setDisplay(display + num);
             result = display + num;
         }
+        /*
+        else {
+            setDisplay(display + num);
+            result = display + num;
+        }*/
         
     }
 
@@ -53,7 +61,7 @@ function Calculator() {
     return (
         <div>
             <h2>Calculator</h2>
-            <h3>{currentMathOperator}</h3>
+            
             <div className='calculator'> 
                 <div className='result'>{resultDisplay}</div>
                 <div className='display'>{display}</div>

@@ -39,3 +39,12 @@
     border-radius: 15px;
     font-weight: bold;
 }
+
+.mam {
+    color: white;
+    background-color: blue;
+    height: 100px;
+    width: 200px;
+    display: block;
+    margin: auto;
+}
