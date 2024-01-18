@@ -5,11 +5,11 @@ function Calculator() {
 
     let lastElementInDisplay;
     let secondLastElementInDisplay;
-    let result = 0;
+    //let newCalc = false;
 
     const [resultDisplay, setResultDisplay] = useState(0);
     const [display, setDisplay] = useState(" ");
-    const [currentMathOperator, setCurrentMathOperator] = useState("");
+    const [newCalc, setNewCalc] = useState("false")
 
     const resetAll = () => {
         setResultDisplay(0);
@@ -17,7 +17,8 @@ function Calculator() {
     }
 
     const resetDisplay = () => {
-        setDisplay(" ");
+        setDisplay("");
+        setNewCalc("false");
     }
 
     const addNumberToDisplay = (num) => {
@@ -25,15 +26,18 @@ function Calculator() {
         lastElementInDisplay = display[display.length - 1];
         secondLastElementInDisplay = display[display.length - 2];
 
-        if (lastElementInDisplay === "+" || lastElementInDisplay === "-" || lastElementInDisplay === "*" || lastElementInDisplay === "/"){
+        if(newCalc === "true"){
+            resetDisplay();
+        }
+
+        if (['+', '-', '*', '/'].includes(lastElementInDisplay)){
             setDisplay(display + " " + num);
-            result = display + num;
         }
         else if (lastElementInDisplay !== "0" || secondLastElementInDisplay !== " ") {
             /* Check if last Input was 0 and if second last Input was " ". If yes you can't add more zero's */
             setDisplay(display + num);
-            result = display + num;
         }
+        
         /*
         else {
             setDisplay(display + num);
@@ -44,24 +48,33 @@ function Calculator() {
 
     const mathOperator = (operator) => {
         
-        lastElementInDisplay = display[display.length - 1]
-        if (lastElementInDisplay !== "+" && lastElementInDisplay !== "-" && lastElementInDisplay !== "*" && lastElementInDisplay !== "/"){
-            setDisplay(display + " " + operator);
+        if (display === ""){
+            return;
         }
-        if (lastElementInDisplay !== operator){
+
+        lastElementInDisplay = display[display.length - 1]
+        secondLastElementInDisplay = display[display.length - 2];
+
+        if (['+', '-', '*', '/'].includes(lastElementInDisplay) || ['+', '-', '*', '/'].includes(secondLastElementInDisplay)){         
+            const newDisplay = [...display];
+            newDisplay[newDisplay.length - 1] = operator;   
+            setDisplay(newDisplay.join(""));
             
         }
-        setCurrentMathOperator(operator);
+        else if (lastElementInDisplay !== operator){
+            setDisplay(display + " " + operator);
+        }
     }
 
     const displayResult = () => {
         setResultDisplay(eval(display));
+        setNewCalc("true");
     }
 
     return (
         <div>
             <h2>Calculator</h2>
-            
+            <h3>thing: {newCalc}</h3>
             <div className='calculator'> 
                 <div className='result'>{resultDisplay}</div>
                 <div className='display'>{display}</div>
