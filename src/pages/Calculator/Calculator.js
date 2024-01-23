@@ -74,7 +74,7 @@ function Calculator() {
     return (
         <div>
             <h2>Calculator</h2>
-            <h3>thing: {newCalc}</h3>
+            
             <div className='calculator'> 
                 <div className='result'>{resultDisplay}</div>
                 <div className='display'>{display}</div>
@@ -99,6 +99,7 @@ function Calculator() {
                 <div><button disabled>.</button></div>
                 <div><button onClick={(e) => displayResult()}>=</button></div>
             </div>
+            <p><i>"x^2", "+/-" and "." buttons are currently disabled, because I haven't added their functionality. There just here to fix the layout haha.</i></p>
         </div>
         
     )

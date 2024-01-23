@@ -1,3 +1,7 @@
+body {
+    background-color: grey;
+}
+
 .calculator {
     margin: auto;
     width: 300px;
@@ -40,11 +44,6 @@
     font-weight: bold;
 }
 
-.mam {
-    color: white;
-    background-color: blue;
-    height: 100px;
-    width: 200px;
-    display: block;
-    margin: auto;
+p {
+    margin-top: 100px;
 }
