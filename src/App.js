@@ -10,8 +10,7 @@ import Calculator from './pages/Calculator/Calculator';
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Header />
         <main>
           <Routes>
@@ -21,7 +20,6 @@ function App() {
         </main>
         <Footer />
       </BrowserRouter>
-    </>
   );
 }
 
